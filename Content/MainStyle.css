@@ -1,0 +1,38 @@
+﻿body {
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #e7e7e7;
+    background-color: #E6E6FA;
+}
+.navbar-default .navbar-nav > li > a {
+    font-family: Algerian;
+    font-size: 20px;
+    font-weight: bold;
+    color: #301934;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+        color: #aed3f4;
+ }
+.nav > li {
+        position: relative;
+        display: block;
+        height: 95px;
+        padding-top: 20px;
+ }
+.logo-size{
+    margin-top: -15px;
+}
+.footerlinks {
+    color: #aed3f4;
+    text-decoration: none !important;
+}
+
+.footerlinks:hover {
+        color: #ffd800;
+}
+#footer2 {
+    background: #301934;
+}
+
+

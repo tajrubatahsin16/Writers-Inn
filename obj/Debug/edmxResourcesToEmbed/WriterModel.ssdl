@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WritersInnModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="WRITER">
+    <Key>
+      <PropertyRef Name="WriterId" />
+    </Key>
+    <Property Name="WriterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WriterName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="WriterEmail" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="WriterPass" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="WriterPhone" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="WriterPhoto" Type="varchar" MaxLength="255" />
+    <Property Name="WriterBio" Type="varchar" MaxLength="255" />
+    <Property Name="WriterRank" Type="varchar" MaxLength="255" />
+    <Property Name="ActiveStatus" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="WritersInnModel1StoreContainer">
+    <EntitySet Name="WRITER" EntityType="Self.WRITER" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

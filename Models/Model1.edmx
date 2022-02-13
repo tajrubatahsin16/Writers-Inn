@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WriterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="Cus_Id" />
+          </Key>
+          <Property Name="Cus_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cus_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cus_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cus_Password" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Cus_Phone" Type="varchar" MaxLength="11" />
+          <Property Name="Cus_Profilepic" Type="varchar" MaxLength="100" />
+          <Property Name="Purchased_items" Type="int" />
+          <Property Name="Cus_activeStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDERS">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content_Id" Type="int" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Total_Cost" Type="int" Nullable="false" />
+          <Property Name="Order_Status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PAYMENT">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Trx_id" Type="int" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="PaymentStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="REVIEW">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Review_des" Type="varchar" MaxLength="255" />
+          <Property Name="WriterId" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tbl_Content">
+          <Key>
+            <PropertyRef Name="ContentId" />
+          </Key>
+          <Property Name="ContentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContentName" Type="varchar" MaxLength="500" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="shortDescription" Type="varchar" MaxLength="50" />
+          <Property Name="longDescription" Type="varchar" MaxLength="250" />
+          <Property Name="contentImage" Type="varchar(max)" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="WriterId" Type="int" />
+          <Property Name="word_count" Type="int" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="WRITER">
+          <Key>
+            <PropertyRef Name="WriterId" />
+          </Key>
+          <Property Name="WriterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WriterName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="WriterEmail" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="WriterPass" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="WriterPhone" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="WriterPhoto" Type="varchar" MaxLength="255" />
+          <Property Name="WriterBio" Type="varchar" MaxLength="255" />
+          <Property Name="WriterRank" Type="varchar" MaxLength="255" />
+          <Property Name="ActiveStatus" Type="bit" />
+        </EntityType>
+        <Association Name="FK__ORDERS__Content___48CFD27E">
+          <End Role="Tbl_Content" Type="Self.Tbl_Content" Multiplicity="1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Content">
+              <PropertyRef Name="ContentId" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="Content_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERS__Customer__49C3F6B7">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="Cus_Id" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="Customer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REVIEW__WriterId__45F365D3">
+          <End Role="WRITER" Type="Self.WRITER" Multiplicity="0..1" />
+          <End Role="REVIEW" Type="Self.REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WRITER">
+              <PropertyRef Name="WriterId" />
+            </Principal>
+            <Dependent Role="REVIEW">
+              <PropertyRef Name="WriterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Conte__Categ__4222D4EF">
+          <End Role="Tbl_category" Type="Self.Tbl_category" Multiplicity="0..1" />
+          <End Role="Tbl_Content" Type="Self.Tbl_Content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Tbl_Content">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Conte__Write__4316F928">
+          <End Role="WRITER" Type="Self.WRITER" Multiplicity="0..1" />
+          <End Role="Tbl_Content" Type="Self.Tbl_Content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WRITER">
+              <PropertyRef Name="WriterId" />
+            </Principal>
+            <Dependent Role="Tbl_Content">
+              <PropertyRef Name="WriterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WriterModelStoreContainer">
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERS" EntityType="Self.ORDERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAYMENT" EntityType="Self.PAYMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REVIEW" EntityType="Self.REVIEW" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_category" EntityType="Self.Tbl_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Content" EntityType="Self.Tbl_Content" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WRITER" EntityType="Self.WRITER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ORDERS__Content___48CFD27E" Association="Self.FK__ORDERS__Content___48CFD27E">
+            <End Role="Tbl_Content" EntitySet="Tbl_Content" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERS__Customer__49C3F6B7" Association="Self.FK__ORDERS__Customer__49C3F6B7">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REVIEW__WriterId__45F365D3" Association="Self.FK__REVIEW__WriterId__45F365D3">
+            <End Role="WRITER" EntitySet="WRITER" />
+            <End Role="REVIEW" EntitySet="REVIEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Conte__Categ__4222D4EF" Association="Self.FK__Tbl_Conte__Categ__4222D4EF">
+            <End Role="Tbl_category" EntitySet="Tbl_category" />
+            <End Role="Tbl_Content" EntitySet="Tbl_Content" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Conte__Write__4316F928" Association="Self.FK__Tbl_Conte__Write__4316F928">
+            <End Role="WRITER" EntitySet="WRITER" />
+            <End Role="Tbl_Content" EntitySet="Tbl_Content" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WriterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="WRITER">
+          <Key>
+            <PropertyRef Name="WriterId" />
+          </Key>
+          <Property Name="WriterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WriterName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WriterEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WriterPass" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WriterPhone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WriterPhoto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WriterBio" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WriterRank" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ActiveStatus" Type="Boolean" />
+          <NavigationProperty Name="REVIEWs" Relationship="WriterModel.FK__REVIEW__WriterId__45F365D3" FromRole="WRITER" ToRole="REVIEW" />
+          <NavigationProperty Name="Tbl_Content" Relationship="WriterModel.FK__Tbl_Conte__Write__4316F928" FromRole="WRITER" ToRole="Tbl_Content" />
+        </EntityType>
+        <EntityContainer Name="WriterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="WRITERs" EntityType="Self.WRITER" />
+          <EntitySet Name="CUSTOMERs" EntityType="WriterModel.CUSTOMER" />
+          <EntitySet Name="ORDERS" EntityType="WriterModel.ORDER" />
+          <EntitySet Name="PAYMENTs" EntityType="WriterModel.PAYMENT" />
+          <EntitySet Name="REVIEWs" EntityType="WriterModel.REVIEW" />
+          <EntitySet Name="Tbl_category" EntityType="WriterModel.Tbl_category" />
+          <EntitySet Name="Tbl_Content" EntityType="WriterModel.Tbl_Content" />
+          <AssociationSet Name="FK__ORDERS__Customer__49C3F6B7" Association="WriterModel.FK__ORDERS__Customer__49C3F6B7">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+            <End Role="ORDER" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERS__Content___48CFD27E" Association="WriterModel.FK__ORDERS__Content___48CFD27E">
+            <End Role="Tbl_Content" EntitySet="Tbl_Content" />
+            <End Role="ORDER" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REVIEW__WriterId__45F365D3" Association="WriterModel.FK__REVIEW__WriterId__45F365D3">
+            <End Role="WRITER" EntitySet="WRITERs" />
+            <End Role="REVIEW" EntitySet="REVIEWs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Conte__Categ__4222D4EF" Association="WriterModel.FK__Tbl_Conte__Categ__4222D4EF">
+            <End Role="Tbl_category" EntitySet="Tbl_category" />
+            <End Role="Tbl_Content" EntitySet="Tbl_Content" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tbl_Conte__Write__4316F928" Association="WriterModel.FK__Tbl_Conte__Write__4316F928">
+            <End Role="WRITER" EntitySet="WRITERs" />
+            <End Role="Tbl_Content" EntitySet="Tbl_Content" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="Cus_Id" />
+          </Key>
+          <Property Name="Cus_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cus_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cus_Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cus_Password" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Cus_Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Cus_Profilepic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Purchased_items" Type="Int32" />
+          <Property Name="Cus_activeStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ORDERS" Relationship="WriterModel.FK__ORDERS__Customer__49C3F6B7" FromRole="CUSTOMER" ToRole="ORDER" />
+        </EntityType>
+        <EntityType Name="ORDER">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content_Id" Type="Int32" Nullable="false" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Total_Cost" Type="Int32" Nullable="false" />
+          <Property Name="Order_Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="WriterModel.FK__ORDERS__Customer__49C3F6B7" FromRole="ORDER" ToRole="CUSTOMER" />
+          <NavigationProperty Name="Tbl_Content" Relationship="WriterModel.FK__ORDERS__Content___48CFD27E" FromRole="ORDER" ToRole="Tbl_Content" />
+        </EntityType>
+        <EntityType Name="PAYMENT">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Trx_id" Type="Int32" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentStatus" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="REVIEW">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Review_des" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WriterId" Type="Int32" />
+          <NavigationProperty Name="WRITER" Relationship="WriterModel.FK__REVIEW__WriterId__45F365D3" FromRole="REVIEW" ToRole="WRITER" />
+        </EntityType>
+        <EntityType Name="Tbl_category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Tbl_Content" Relationship="WriterModel.FK__Tbl_Conte__Categ__4222D4EF" FromRole="Tbl_category" ToRole="Tbl_Content" />
+        </EntityType>
+        <EntityType Name="Tbl_Content">
+          <Key>
+            <PropertyRef Name="ContentId" />
+          </Key>
+          <Property Name="ContentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContentName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="shortDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="longDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="contentImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="WriterId" Type="Int32" />
+          <Property Name="word_count" Type="Int32" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="ORDERS" Relationship="WriterModel.FK__ORDERS__Content___48CFD27E" FromRole="Tbl_Content" ToRole="ORDER" />
+          <NavigationProperty Name="Tbl_category" Relationship="WriterModel.FK__Tbl_Conte__Categ__4222D4EF" FromRole="Tbl_Content" ToRole="Tbl_category" />
+          <NavigationProperty Name="WRITER" Relationship="WriterModel.FK__Tbl_Conte__Write__4316F928" FromRole="Tbl_Content" ToRole="WRITER" />
+        </EntityType>
+        <Association Name="FK__ORDERS__Customer__49C3F6B7">
+          <End Type="WriterModel.CUSTOMER" Role="CUSTOMER" Multiplicity="1" />
+          <End Type="WriterModel.ORDER" Role="ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="Cus_Id" />
+            </Principal>
+            <Dependent Role="ORDER">
+              <PropertyRef Name="Customer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERS__Content___48CFD27E">
+          <End Type="WriterModel.Tbl_Content" Role="Tbl_Content" Multiplicity="1" />
+          <End Type="WriterModel.ORDER" Role="ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Content">
+              <PropertyRef Name="ContentId" />
+            </Principal>
+            <Dependent Role="ORDER">
+              <PropertyRef Name="Content_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REVIEW__WriterId__45F365D3">
+          <End Type="WriterModel.WRITER" Role="WRITER" Multiplicity="0..1" />
+          <End Type="WriterModel.REVIEW" Role="REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WRITER">
+              <PropertyRef Name="WriterId" />
+            </Principal>
+            <Dependent Role="REVIEW">
+              <PropertyRef Name="WriterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Conte__Categ__4222D4EF">
+          <End Type="WriterModel.Tbl_category" Role="Tbl_category" Multiplicity="0..1" />
+          <End Type="WriterModel.Tbl_Content" Role="Tbl_Content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Tbl_Content">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tbl_Conte__Write__4316F928">
+          <End Type="WriterModel.WRITER" Role="WRITER" Multiplicity="0..1" />
+          <End Type="WriterModel.Tbl_Content" Role="Tbl_Content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WRITER">
+              <PropertyRef Name="WriterId" />
+            </Principal>
+            <Dependent Role="Tbl_Content">
+              <PropertyRef Name="WriterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WriterModelStoreContainer" CdmEntityContainer="WriterEntities">
+          <EntitySetMapping Name="WRITERs">
+            <EntityTypeMapping TypeName="WriterModel.WRITER">
+              <MappingFragment StoreEntitySet="WRITER">
+                <ScalarProperty Name="WriterId" ColumnName="WriterId" />
+                <ScalarProperty Name="WriterName" ColumnName="WriterName" />
+                <ScalarProperty Name="WriterEmail" ColumnName="WriterEmail" />
+                <ScalarProperty Name="WriterPass" ColumnName="WriterPass" />
+                <ScalarProperty Name="WriterPhone" ColumnName="WriterPhone" />
+                <ScalarProperty Name="WriterPhoto" ColumnName="WriterPhoto" />
+                <ScalarProperty Name="WriterBio" ColumnName="WriterBio" />
+                <ScalarProperty Name="WriterRank" ColumnName="WriterRank" />
+                <ScalarProperty Name="ActiveStatus" ColumnName="ActiveStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMERs">
+            <EntityTypeMapping TypeName="WriterModel.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="Cus_activeStatus" ColumnName="Cus_activeStatus" />
+                <ScalarProperty Name="Purchased_items" ColumnName="Purchased_items" />
+                <ScalarProperty Name="Cus_Profilepic" ColumnName="Cus_Profilepic" />
+                <ScalarProperty Name="Cus_Phone" ColumnName="Cus_Phone" />
+                <ScalarProperty Name="Cus_Password" ColumnName="Cus_Password" />
+                <ScalarProperty Name="Cus_Email" ColumnName="Cus_Email" />
+                <ScalarProperty Name="Cus_Name" ColumnName="Cus_Name" />
+                <ScalarProperty Name="Cus_Id" ColumnName="Cus_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERS">
+            <EntityTypeMapping TypeName="WriterModel.ORDER">
+              <MappingFragment StoreEntitySet="ORDERS">
+                <ScalarProperty Name="Order_Status" ColumnName="Order_Status" />
+                <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="Content_Id" ColumnName="Content_Id" />
+                <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAYMENTs">
+            <EntityTypeMapping TypeName="WriterModel.PAYMENT">
+              <MappingFragment StoreEntitySet="PAYMENT">
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Trx_id" ColumnName="Trx_id" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REVIEWs">
+            <EntityTypeMapping TypeName="WriterModel.REVIEW">
+              <MappingFragment StoreEntitySet="REVIEW">
+                <ScalarProperty Name="WriterId" ColumnName="WriterId" />
+                <ScalarProperty Name="Review_des" ColumnName="Review_des" />
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_category">
+            <EntityTypeMapping TypeName="WriterModel.Tbl_category">
+              <MappingFragment StoreEntitySet="Tbl_category">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Content">
+            <EntityTypeMapping TypeName="WriterModel.Tbl_Content">
+              <MappingFragment StoreEntitySet="Tbl_Content">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="word_count" ColumnName="word_count" />
+                <ScalarProperty Name="WriterId" ColumnName="WriterId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="contentImage" ColumnName="contentImage" />
+                <ScalarProperty Name="longDescription" ColumnName="longDescription" />
+                <ScalarProperty Name="shortDescription" ColumnName="shortDescription" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ContentName" ColumnName="ContentName" />
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

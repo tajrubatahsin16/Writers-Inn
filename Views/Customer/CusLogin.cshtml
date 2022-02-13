@@ -1,0 +1,83 @@
+﻿@model WritersInn1.Models.CustomerLogin
+
+@{
+    ViewBag.Title = "CusLogin";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<title>ViewBag.Title</title>-->
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Meta tag Keywords -->
+    <!-- css files -->
+    <link href="~/Content/Loginstyle.css" rel="stylesheet" type="text/css" media="all">
+    <!-- online-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900iSlabo+27px&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <!--//online-fonts -->
+</head>
+<body>
+    <!--main-->
+    <div class="main">
+        <div class="main_form">
+            <h2>Welcome to Writers Inn!</h2>
+            @using (Html.BeginForm("CusLogin", "Customer", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                if (ViewBag.Message != "")
+                {
+                    <div class="text-danger">@ViewBag.Message</div>
+                }
+                <div class="form-group">
+                    <div class="labels">
+                        @Html.LabelFor(model => model.EmailID, new { @class = "control-label" })
+                    </div>
+                    <div class="inputs">
+                        @Html.TextBoxFor(model => model.EmailID, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+
+                        <span class="glyphicon-user form-control-feedback"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="labels">
+                        @Html.LabelFor(model => model.Password, new { @class = "control-label" })
+                    </div>
+                    <div class="inputs">
+                        @Html.PasswordFor(model => model.Password)
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                //<span>@Html.CheckBoxFor(model => model.RememberMe)Remember Me</span>
+                <input type="submit" value="Login" class="btn btn-default" />
+            }
+            <p>Don't Have an Account?<a>@Html.ActionLink("Register Now", "CusRegister", "Customer")</a></p>
+        </div>
+        <div id="forgot-pw">
+            <form action="" class="form">
+                <a href="#" class="close">&times;</a>
+                <h2>Reset Password</h2>
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <input type="submit" value="Submit" class="submit-btn">
+            </form>
+        </div>
+    </div>
+
+    <!--//main-->
+</body>
+</html>
+

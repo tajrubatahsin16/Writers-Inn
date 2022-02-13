@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WriterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="WRITER">
+    <Key>
+      <PropertyRef Name="WriterId" />
+    </Key>
+    <Property Name="WriterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WriterName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WriterEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WriterPass" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WriterPhone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WriterPhoto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="WriterBio" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="WriterRank" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ActiveStatus" Type="Boolean" />
+    <NavigationProperty Name="REVIEWs" Relationship="WriterModel.FK__REVIEW__WriterId__45F365D3" FromRole="WRITER" ToRole="REVIEW" />
+    <NavigationProperty Name="Tbl_Content" Relationship="WriterModel.FK__Tbl_Conte__Write__4316F928" FromRole="WRITER" ToRole="Tbl_Content" />
+  </EntityType>
+  <EntityContainer Name="WriterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="WRITERs" EntityType="Self.WRITER" />
+    <EntitySet Name="CUSTOMERs" EntityType="WriterModel.CUSTOMER" />
+    <EntitySet Name="ORDERS" EntityType="WriterModel.ORDER" />
+    <EntitySet Name="PAYMENTs" EntityType="WriterModel.PAYMENT" />
+    <EntitySet Name="REVIEWs" EntityType="WriterModel.REVIEW" />
+    <EntitySet Name="Tbl_category" EntityType="WriterModel.Tbl_category" />
+    <EntitySet Name="Tbl_Content" EntityType="WriterModel.Tbl_Content" />
+    <AssociationSet Name="FK__ORDERS__Customer__49C3F6B7" Association="WriterModel.FK__ORDERS__Customer__49C3F6B7">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="ORDER" EntitySet="ORDERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ORDERS__Content___48CFD27E" Association="WriterModel.FK__ORDERS__Content___48CFD27E">
+      <End Role="Tbl_Content" EntitySet="Tbl_Content" />
+      <End Role="ORDER" EntitySet="ORDERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__REVIEW__WriterId__45F365D3" Association="WriterModel.FK__REVIEW__WriterId__45F365D3">
+      <End Role="WRITER" EntitySet="WRITERs" />
+      <End Role="REVIEW" EntitySet="REVIEWs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tbl_Conte__Categ__4222D4EF" Association="WriterModel.FK__Tbl_Conte__Categ__4222D4EF">
+      <End Role="Tbl_category" EntitySet="Tbl_category" />
+      <End Role="Tbl_Content" EntitySet="Tbl_Content" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tbl_Conte__Write__4316F928" Association="WriterModel.FK__Tbl_Conte__Write__4316F928">
+      <End Role="WRITER" EntitySet="WRITERs" />
+      <End Role="Tbl_Content" EntitySet="Tbl_Content" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="Cus_Id" />
+    </Key>
+    <Property Name="Cus_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cus_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cus_Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cus_Password" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Cus_Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Cus_Profilepic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Purchased_items" Type="Int32" />
+    <Property Name="Cus_activeStatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ORDERS" Relationship="WriterModel.FK__ORDERS__Customer__49C3F6B7" FromRole="CUSTOMER" ToRole="ORDER" />
+  </EntityType>
+  <EntityType Name="ORDER">
+    <Key>
+      <PropertyRef Name="Order_Id" />
+    </Key>
+    <Property Name="Order_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Content_Id" Type="Int32" Nullable="false" />
+    <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Total_Cost" Type="Int32" Nullable="false" />
+    <Property Name="Order_Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CUSTOMER" Relationship="WriterModel.FK__ORDERS__Customer__49C3F6B7" FromRole="ORDER" ToRole="CUSTOMER" />
+    <NavigationProperty Name="Tbl_Content" Relationship="WriterModel.FK__ORDERS__Content___48CFD27E" FromRole="ORDER" ToRole="Tbl_Content" />
+  </EntityType>
+  <EntityType Name="PAYMENT">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Trx_id" Type="Int32" Nullable="false" />
+    <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+    <Property Name="PaymentStatus" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="REVIEW">
+    <Key>
+      <PropertyRef Name="ReviewId" />
+    </Key>
+    <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Review_des" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="WriterId" Type="Int32" />
+    <NavigationProperty Name="WRITER" Relationship="WriterModel.FK__REVIEW__WriterId__45F365D3" FromRole="REVIEW" ToRole="WRITER" />
+  </EntityType>
+  <EntityType Name="Tbl_category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <NavigationProperty Name="Tbl_Content" Relationship="WriterModel.FK__Tbl_Conte__Categ__4222D4EF" FromRole="Tbl_category" ToRole="Tbl_Content" />
+  </EntityType>
+  <EntityType Name="Tbl_Content">
+    <Key>
+      <PropertyRef Name="ContentId" />
+    </Key>
+    <Property Name="ContentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContentName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="shortDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="longDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="contentImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="WriterId" Type="Int32" />
+    <Property Name="word_count" Type="Int32" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="ORDERS" Relationship="WriterModel.FK__ORDERS__Content___48CFD27E" FromRole="Tbl_Content" ToRole="ORDER" />
+    <NavigationProperty Name="Tbl_category" Relationship="WriterModel.FK__Tbl_Conte__Categ__4222D4EF" FromRole="Tbl_Content" ToRole="Tbl_category" />
+    <NavigationProperty Name="WRITER" Relationship="WriterModel.FK__Tbl_Conte__Write__4316F928" FromRole="Tbl_Content" ToRole="WRITER" />
+  </EntityType>
+  <Association Name="FK__ORDERS__Customer__49C3F6B7">
+    <End Type="WriterModel.CUSTOMER" Role="CUSTOMER" Multiplicity="1" />
+    <End Type="WriterModel.ORDER" Role="ORDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="Cus_Id" />
+      </Principal>
+      <Dependent Role="ORDER">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ORDERS__Content___48CFD27E">
+    <End Type="WriterModel.Tbl_Content" Role="Tbl_Content" Multiplicity="1" />
+    <End Type="WriterModel.ORDER" Role="ORDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Content">
+        <PropertyRef Name="ContentId" />
+      </Principal>
+      <Dependent Role="ORDER">
+        <PropertyRef Name="Content_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__REVIEW__WriterId__45F365D3">
+    <End Type="WriterModel.WRITER" Role="WRITER" Multiplicity="0..1" />
+    <End Type="WriterModel.REVIEW" Role="REVIEW" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WRITER">
+        <PropertyRef Name="WriterId" />
+      </Principal>
+      <Dependent Role="REVIEW">
+        <PropertyRef Name="WriterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tbl_Conte__Categ__4222D4EF">
+    <End Type="WriterModel.Tbl_category" Role="Tbl_category" Multiplicity="0..1" />
+    <End Type="WriterModel.Tbl_Content" Role="Tbl_Content" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Tbl_Content">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tbl_Conte__Write__4316F928">
+    <End Type="WriterModel.WRITER" Role="WRITER" Multiplicity="0..1" />
+    <End Type="WriterModel.Tbl_Content" Role="Tbl_Content" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WRITER">
+        <PropertyRef Name="WriterId" />
+      </Principal>
+      <Dependent Role="Tbl_Content">
+        <PropertyRef Name="WriterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

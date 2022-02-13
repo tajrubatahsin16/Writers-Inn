@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WritersInnModel1StoreContainer" CdmEntityContainer="WritersInnEntities1">
+    <EntitySetMapping Name="WRITERs">
+      <EntityTypeMapping TypeName="WritersInnModel1.WRITER">
+        <MappingFragment StoreEntitySet="WRITER">
+          <ScalarProperty Name="WriterId" ColumnName="WriterId" />
+          <ScalarProperty Name="WriterName" ColumnName="WriterName" />
+          <ScalarProperty Name="WriterEmail" ColumnName="WriterEmail" />
+          <ScalarProperty Name="WriterPass" ColumnName="WriterPass" />
+          <ScalarProperty Name="WriterPhone" ColumnName="WriterPhone" />
+          <ScalarProperty Name="WriterPhoto" ColumnName="WriterPhoto" />
+          <ScalarProperty Name="WriterBio" ColumnName="WriterBio" />
+          <ScalarProperty Name="WriterRank" ColumnName="WriterRank" />
+          <ScalarProperty Name="ActiveStatus" ColumnName="ActiveStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

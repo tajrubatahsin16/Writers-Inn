@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WriterModelStoreContainer" CdmEntityContainer="WriterEntities">
+    <EntitySetMapping Name="WRITERs">
+      <EntityTypeMapping TypeName="WriterModel.WRITER">
+        <MappingFragment StoreEntitySet="WRITER">
+          <ScalarProperty Name="WriterId" ColumnName="WriterId" />
+          <ScalarProperty Name="WriterName" ColumnName="WriterName" />
+          <ScalarProperty Name="WriterEmail" ColumnName="WriterEmail" />
+          <ScalarProperty Name="WriterPass" ColumnName="WriterPass" />
+          <ScalarProperty Name="WriterPhone" ColumnName="WriterPhone" />
+          <ScalarProperty Name="WriterPhoto" ColumnName="WriterPhoto" />
+          <ScalarProperty Name="WriterBio" ColumnName="WriterBio" />
+          <ScalarProperty Name="WriterRank" ColumnName="WriterRank" />
+          <ScalarProperty Name="ActiveStatus" ColumnName="ActiveStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMERs">
+      <EntityTypeMapping TypeName="WriterModel.CUSTOMER">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="Cus_activeStatus" ColumnName="Cus_activeStatus" />
+          <ScalarProperty Name="Purchased_items" ColumnName="Purchased_items" />
+          <ScalarProperty Name="Cus_Profilepic" ColumnName="Cus_Profilepic" />
+          <ScalarProperty Name="Cus_Phone" ColumnName="Cus_Phone" />
+          <ScalarProperty Name="Cus_Password" ColumnName="Cus_Password" />
+          <ScalarProperty Name="Cus_Email" ColumnName="Cus_Email" />
+          <ScalarProperty Name="Cus_Name" ColumnName="Cus_Name" />
+          <ScalarProperty Name="Cus_Id" ColumnName="Cus_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDERS">
+      <EntityTypeMapping TypeName="WriterModel.ORDER">
+        <MappingFragment StoreEntitySet="ORDERS">
+          <ScalarProperty Name="Order_Status" ColumnName="Order_Status" />
+          <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+          <ScalarProperty Name="Content_Id" ColumnName="Content_Id" />
+          <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAYMENTs">
+      <EntityTypeMapping TypeName="WriterModel.PAYMENT">
+        <MappingFragment StoreEntitySet="PAYMENT">
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="Trx_id" ColumnName="Trx_id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REVIEWs">
+      <EntityTypeMapping TypeName="WriterModel.REVIEW">
+        <MappingFragment StoreEntitySet="REVIEW">
+          <ScalarProperty Name="WriterId" ColumnName="WriterId" />
+          <ScalarProperty Name="Review_des" ColumnName="Review_des" />
+          <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_category">
+      <EntityTypeMapping TypeName="WriterModel.Tbl_category">
+        <MappingFragment StoreEntitySet="Tbl_category">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Content">
+      <EntityTypeMapping TypeName="WriterModel.Tbl_Content">
+        <MappingFragment StoreEntitySet="Tbl_Content">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="word_count" ColumnName="word_count" />
+          <ScalarProperty Name="WriterId" ColumnName="WriterId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="contentImage" ColumnName="contentImage" />
+          <ScalarProperty Name="longDescription" ColumnName="longDescription" />
+          <ScalarProperty Name="shortDescription" ColumnName="shortDescription" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ContentName" ColumnName="ContentName" />
+          <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WritersInnModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="WRITER">
+    <Key>
+      <PropertyRef Name="WriterId" />
+    </Key>
+    <Property Name="WriterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WriterName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WriterEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WriterPass" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WriterPhone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WriterPhoto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="WriterBio" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="WriterRank" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ActiveStatus" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="WritersInnEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="WRITERs" EntityType="Self.WRITER" />
+  </EntityContainer>
+</Schema>

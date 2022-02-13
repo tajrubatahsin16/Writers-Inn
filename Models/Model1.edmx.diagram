@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e4f064283b1348088ab4c6a294e82f35" Name="Diagram1">
+        <EntityTypeShape EntityType="WriterModel.WRITER" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WriterModel.CUSTOMER" Width="1.5" PointX="4.375" PointY="10.25" />
+        <EntityTypeShape EntityType="WriterModel.ORDER" Width="1.5" PointX="6.625" PointY="1.375" />
+        <EntityTypeShape EntityType="WriterModel.PAYMENT" Width="1.5" PointX="6.75" PointY="5.125" />
+        <EntityTypeShape EntityType="WriterModel.REVIEW" Width="1.5" PointX="4.375" PointY="6.75" />
+        <EntityTypeShape EntityType="WriterModel.Tbl_category" Width="1.5" PointX="2.125" PointY="5.625" />
+        <EntityTypeShape EntityType="WriterModel.Tbl_Content" Width="1.5" PointX="4.375" PointY="0.5" />
+        <AssociationConnector Association="WriterModel.FK__ORDERS__Customer__49C3F6B7" />
+        <AssociationConnector Association="WriterModel.FK__ORDERS__Content___48CFD27E" />
+        <AssociationConnector Association="WriterModel.FK__REVIEW__WriterId__45F365D3" />
+        <AssociationConnector Association="WriterModel.FK__Tbl_Conte__Categ__4222D4EF" />
+        <AssociationConnector Association="WriterModel.FK__Tbl_Conte__Write__4316F928" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

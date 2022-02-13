@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "CusIndex";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Home </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../Content/UserHome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <!-- ***********header part ss**************-->
+    <div class="bgimg">
+
+        <div class="container text-center text-white headerset">
+            <h1> Welcome @HttpContext.Current.User.Identity.Name to Writers Inn </h1>
+            <h2> Access content writing services from a network of specialized, professional writers. </h2>
+            <button class="btn btn-info text-white btn-lg"> Contact Us </button>
+        </div>
+
+    </div>
+
+    <!-- ***********header part ends**************-->
+    <!-- ***********3 extra header part starts**************-->
+    <section class="header-extradiv">
+        <div class="container headings text-center">
+            <h1> Whatever industry you’re in, we have expert writers to engage your audience!</h1>
+            <div class="row">
+                <div class="extra-div col-lg-4 col-md-4 col-12">
+                    <a href="#"> <i class="fa-3x fa fa-id-card-o" aria-hidden="true"></i> </a>
+                    <h2> AGENCIES </h2>
+                    <p>We partner with agencies to support the content and copywriting needs of their clients.</p>
+                </div>
+                <div class="extra-div col-lg-4 col-md-4 col-12">
+                    <a href="#"> <i class="fa-3x fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                    <h2> ECOMMERCE </h2>
+                    <p>We write product descriptions, web pages, and category pages with an emphasis on SEO.</p>
+                </div>
+                <div class="extra-div col-lg-4 col-md-4 col-12">
+                    <a href="#"> <i class="fa-3x  fa fa-globe" aria-hidden="true"></i> </a>
+                    <h2> BRANDS </h2>
+                    <p>We develop your voice and tone and write custom content for your brands, big and small.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<!-- ***********3 extra header part ends**************-->
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("Logout", "Customer", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+    }
+}
+
+
