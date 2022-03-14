@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+body {
+	background: url('../Images/LoginBG.jpg');
+}
+
+.heading{
+	padding-bottom:50px;
+	padding-top:30px;
+}
+.heading h2{
+	color:black;
+	text-align:center;	
+}
+.row .menuall {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.menuall img {
+  width: 100%;
+  height: 250px;
+  border-radius: 15px;
+}
+
+.itemheading {
+  font-size: 100%;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-left: 10px;
+  color: wheat;
+}
+
+.itemdes {
+  font-size: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: lavender;
+}
+
+.addtocart {
+  display: flex;
+  border-style: none;
+  align-items: baseline;
+  justify-content: center;
+  background-color: black;
+  color: #86c232;
+  padding-top: 5%;
+  border-radius: 15px;
+  width: 100%;
+  font-size: 18px;
+}
+
+.addtocart:hover {
+  background: indianred;
+  color: ivory;
+}
+
+.addalliconsp {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 15px;
+  color: rgb(167, 248, 235);
+}
+
+.addall {
+  display: flex;
+  margin-left: 20%;
+  font-size: 15px;
+  align-items: baseline;
+
+}
+
+.addallicons {
+  color: rgb(231, 218, 218);
+}
+
+.add {
+  display: flex;
+  padding-bottom: 20px;
+}
+
+.minusplus {
+  background: none;
+  border: none;
+  padding-left: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 5px;
+  border-radius: 50%;
+}
+
+.minusplus:hover {
+  background: indianred;
+  color: ivory;
+}
+
+
+.Wdetails {
+  margin-left: 10px;
+}
+.Wname {
+  color: antiquewhite;
+  text-align: right;
+  font-size: 15px;
+}
+
+.Wdes {
+  font-size: 18px;
+  color: coral;
+}
+
+
+.WritersProf img {
+  width: 16%;
+  height: 90%;
+  border-radius: 55%;
+}
+
+.WritersProf {
+  display: flex;
+  padding-top: 12px;
+}
+
+
+
+.Wname {
+  font-size: 35px;
+  text-align: left;
+  color: antiquewhite;
+  font-style: italic;
+}
+

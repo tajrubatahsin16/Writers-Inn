@@ -1,0 +1,54 @@
+﻿@model WritersInn1.Models.getAllContent
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Writers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../Content/AddtoCart.css">
+</head>
+<body>
+    <main>
+
+        <div class="container">
+
+            @using (Html.BeginForm())
+            {
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <input type="hidden" name="id" value="@Model.CID" />
+                        <div class="cPic">
+                        <img src="~/Uploads/@Model.Cimage" style="height:250px;width:100%" />
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="cDetails">
+                            <h3>@Model.CName</h3>
+
+                            <p>@Model.CSDesc</p>
+                            <p> @Model.CLDesc</p>
+                            <p>BDT <strong>@Model.CPrice</strong></p>
+                            <input type="number" min="1" max="10" name="qty" />
+                            <div class="addbtn">
+                                <input type="submit" value="Add to Cart" />
+                            </div>
+                            <div class="back">
+                                <a> @Html.ActionLink("Go Back ","ContentsViewCustomer", "ContentsCustomer") </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            }
+        </div>
+        </main>
+</body>
+</html>

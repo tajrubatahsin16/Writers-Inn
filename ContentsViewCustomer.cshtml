@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WritersInn1.Models.getAllContent>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Writers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../Content/allWriters.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">Order Contents</div>
+
+            <div class="cards_wrap">
+                @foreach (var item in Model)
+                {
+                <div class="card_item">
+                    
+                        <div class="card_inner">
+                            <img src="@Url.Content(item.Cimage)" alt="" />
+
+                            <div class="writer_name">
+                                @Html.DisplayFor(modelItem => item.CName)
+                            </div>
+                            <div class="writer_name">
+                                <p> Offered By @Html.DisplayFor(modelItem => item.WName) </p>
+                            </div>
+                            <div class="writerBio">
+                                @Html.DisplayFor(modelItem => item.CSDesc)
+                            </div>
+                            <button class="Viewcontentinfo">
+                                <h2> View Details <a href="@Url.Action("AddtoCart", "ContentsCustomer", new { id = @item.CID })" class="img-prod"></h2>
+                            </button>
+                        </div>
+                </div>
+                
+        }
+        </div>
+        </div>
+</body>
+</html>

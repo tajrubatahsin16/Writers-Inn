@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WritersInn1.Models.Tbl_Content>
+
+@{
+    ViewBag.Title = "Content";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+<div class="card mb-3">
+    <div class="card-header" style="font-family:'Times New Roman'; font-size: 25px; font:bolder;">
+        <i class="fas fa-table"></i>
+        Contents
+        <a href="../Writer/ContentAdd" class="btn btn-info pull-right fa fa-plus">Add New</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr style="font-family:'Times New Roman'; font-size: 18px; font:bolder;">
+                        <th>Sr. No.</th>
+                        <th>Content Name</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        int count = 1;
+                        <tr style="font-family:'Times New Roman'; font-size: 18px; font:bolder;">
+                            <td>@item.ContentId</td>
+                            <td>@item.ContentName</td>
+                            <td>
+
+                                @Html.ActionLink("Edit", "ProductEdit", new { ContentId = item.ContentId })
+                            </td>
+
+                        </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

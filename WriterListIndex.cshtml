@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WritersInn1.Models.WRITER>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Writers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../Content/allWriters.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">Meet The Writers</div>
+        <div class="cards_wrap">
+            @foreach (var item in Model)
+            {
+                <div class="card_item">
+                    <div class="card_inner">
+                        
+
+                        <div class="writer_name">
+                            @Html.DisplayFor(modelItem => item.WriterName)
+                        </div>
+                        <div class="writerBio">
+                            @Html.DisplayFor(modelItem => item.WriterBio)
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="Viewallcontents">
+            <h2><a>@Html.ActionLink("Order Contents", "ContentsViewCustomer", "ContentsCustomer")</a></h2>
+        </button>
+    </div>
+</body>
+</html>

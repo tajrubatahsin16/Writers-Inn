@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" type="text/css" href="../../Content/Navigationbar.css">
+
+
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark ">
+
+            <div class="container p-2">
+                <a class="navbar-brand text-white" href=""><img src="../../images/SDlogo.png"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon "></span>
+                </button>
+                <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" @Html.ActionLink("HOME","CusIndex", "CustomerHome")> </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" @Html.ActionLink("CONTENTS","ContentsViewCustomer", "ContentsCustomer")> </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" @Html.ActionLink("WRITERS","WriterListIndex", "WriterList")> </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" @Html.ActionLink("LOGIN","CusLogin", "Customer")></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    @RenderBody()
+    <hr />
+    <footer>
+        <footer class="footersection" id="footerdiv">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12 footer-div">
+                        <div>
+                            <h3> About WritersInn</h3>
+                            <p>
+                                WritersInn puts quality written content at the heart of your company's growth strategy.
+                                Our mission is to connect businesses with diverse audiences through powerful content crafted by specialized writers, managed by a team that puts people first.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6 col-12 footer-div text-white text-center">
+                        <div>
+                            <h3>Navigation Links</h3>
+                            <li> <a href="Index.php" /> Home</li>
+                            <li> <a href="Service.php" /> Writers</li>
+                            <li> <a href="AboutUs.php" /> About</li>
+                            <li> <a href="Contact.php" /> Contact</li>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mt-5 text-center ending">
+                    <p> Copyright ©2022 All rights reserved WritersInn.com  </p>
+                </div>
+            </div>
+        </footer>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>  

@@ -1,0 +1,108 @@
+﻿@model WritersInn1.Models.WRITER
+@{
+    Layout = "~/Views/Shared/ViewPage1.cshtml";
+    ViewBag.Title = "Edit Profile";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link href="~/AdminStyle/css/ContentAdd.css" rel="stylesheet" />
+
+<div class="full">
+    <div class="w3-container" style="padding-left:60px; color:white;">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.WriterId)
+
+            <div class="form-horizontal">
+                <h2 style="font-family:'Times New Roman'; font-size:35px; font:bolder;">Edit Your Profile</h2>
+                <hr />
+
+                <p style="font-family:'Times New Roman'; font-size:18px; font:bolder;">Writer Name</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WriterName, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+
+            <div class="form-horizontal">
+
+                <p style="font-family:'Times New Roman'; font-size:18px; font:bolder;">Writer Email</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WriterEmail, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+
+
+            <div class="form-horizontal">
+                <p style="font-family:'Times New Roman'; font-size:18px; font:bolder;">Password</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WriterPass, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+
+
+            <div class="form-horizontal">
+                <p style="font-family:'Times New Roman'; font-size:18px; font:bolder;">Phone Number</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WriterPhone, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+
+            <div class="form-horizontal">
+                <p style="font-family:'Times New Roman'; font-size:18px; font:bolder;">Writer Photo</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WriterPhoto, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-10">
+
+                        <input type="file" name="file" id="file" style="width: 100%;" />
+
+
+                        @Html.ValidationMessageFor(model => model.WriterPhoto, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="form-horizontal">
+                <p style="font-family:'Times New Roman'; font-size:18px; font:bolder;">Writer Bio</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WriterBio, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+
+            <div class="form-horizontal">
+
+                <p style="font-family:'Times New Roman'; font-size:18px; font:bolder;">Writer Rank</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WriterRank, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+
+            <div class="form-horizontal">
+                <p style="font-family:'Times New Roman'; font-size:18px; font:bolder;">Active Status</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ActiveStatus, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+            </div>
+
+
+
+            <button name="button1" id="submit" value="Create" class=" btn btn btn-outline-success btn-sm" style="font-family:'Times New Roman'; font-size:18px; font:bolder;">Upload </button>
+        }
+
+    </div>
+</div>

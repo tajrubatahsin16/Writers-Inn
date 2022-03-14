@@ -1,0 +1,55 @@
+﻿@model  List<WritersInn1.Models.WRITER>
+@{
+    ViewBag.Title = "Writer Profile";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+
+<div class="card mb-3">
+<div class="card-header" style="font-family:'Times New Roman'; font-size: 25px; font:bolder;">
+    <i class="fas fa-table"></i>
+    Profile
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr style="font-family:'Times New Roman'; font-size: 18px; font:bolder;">
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Phone Number</th>
+                    <th>Biography</th>
+                    <th>Rank</th>
+                    <th>Status</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var us2 in Model)
+                {
+                    <tr style="font-family:'Times New Roman'; font-size: 18px; font:bolder;">
+
+                        <td>@us2.WriterName</td>
+                        <td>@us2.WriterEmail</td>
+                        <td>@us2.WriterPass</td>
+                        <td>@us2.WriterPhone</td>
+                        <td>@us2.WriterBio</td>
+                        <td>@us2.WriterRank</td>
+                        <td>@us2.ActiveStatus</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = us2.WriterId })
+
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+    </div>
+
+

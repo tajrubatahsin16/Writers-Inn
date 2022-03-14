@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+body {
+	background: url('../Images/LoginBG.jpg');
+}
+
+.wrapper .header {
+	width: 100%;
+	height: 150px;
+	background: #285473;
+	color: #fff;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	font-weight: 900;
+	background-color: rgba(43,84,126,.9);
+	margin-bottom: 50px;
+}
+
+.cards_wrap {
+	padding: 20px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+	.cards_wrap .card_item {
+		padding: 15px 25px;
+		width: 25%;
+	}
+
+	.cards_wrap .card_inner {
+		background: rgba(250,250,250,.8);
+		border-radius: 5px;
+		padding: 20px 20px;
+		min-width: 225px;
+		min-height: 315px;
+		max-height: 370px;
+		width: 100%;
+	}
+
+	.cards_wrap .card_item img {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		padding: 2px;
+		border: 3px solid #285473;
+		margin: 0px 33%;
+	}
+
+	.cards_wrap .card_item .writer_name {
+		color: #285473;
+		font-weight: 900;
+		font-size: 20px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		text-align: center;
+	}
+
+
+	.cards_wrap .card_item .writerBio {
+		font-size: 14px;
+		line-height: 24px;
+		color: black;
+		text-align: center;
+		width:280px;
+		height:100px;
+		margin-bottom: 15px;
+	}
+
+.ViewProfile {
+	align-items: center;
+	background-color: #285473;
+	border-radius: 8px;
+	border-style: none;
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 0;
+	font-family: "RM Neue",sans-serif;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0 auto;
+	padding: 10px 21px;
+	text-align: center;
+}
+.ViewProfile a {
+color:white;
+text-decoration:none;
+}
+	.ViewProfile:active {
+		background-color: #285473;
+	}
+
+	.ViewProfile:hover {
+		background-color: #86b2d6;
+		color: #285473;
+	}
+
+.card_item a {
+text-decoration:none;
+}
+
+.Viewallcontents {
+	align-items: center;
+	background-color: rgba(0,132,148, 0.8);
+	border-style: none;
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 0;
+	font-family: "RM Neue",sans-serif;
+	font-size: 20px;
+	line-height: 1.15;
+	margin: 0 auto 40px;
+	padding: 10px 50px 20px;
+	text-align: center;
+}
+
+.Viewallcontents a {
+	color:white;
+	text-decoration:none;
+}
+
+	.Viewallcontents:hover {
+		background-color: #86b2d6;
+	}
+
+		.Viewallcontents:hover a {
+			color: white;
+		}
+
+.Viewcontentinfo {
+	align-items: center;
+	background-color: rgba(0,132,148, 0.8);
+	border-style: none;
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 0;
+	font-family: "RM Neue",sans-serif;
+	font-size: 10px;
+	line-height: 1.15;
+	margin: 0 auto 40px;
+	padding: 10px 50px 20px;
+	text-align: center;
+}
+	.Viewcontentinfo a {
+	text-decoration:none;
+	color:white;
+	}
+
+	@media screen and (max-width: 1024px) {
+		.cards_wrap .card_item {
+		width: 33%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.cards_wrap .card_item {
+		width: 50%;
+	}
+
+	.wrapper .header {
+		font-size: 16px;
+		height: 60px;
+	}
+}
+
+@media screen and (max-width: 568px) {
+	.cards_wrap .card_item {
+		width: 100%;
+	}
+
+	.wrapper .header {
+		font-size: 14px;
+	}
+}

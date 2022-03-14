@@ -1,0 +1,118 @@
+﻿
+
+
+@model WritersInn1.Models.Tbl_Content
+
+@{
+
+    Layout = "~/Views/Shared/ViewPage1.cshtml";
+    ViewBag.Title = "ProductEdit";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link href="~/AdminStyle/css/ContentAdd.css" rel="stylesheet" />
+
+<div class="full">
+    <div class="container contact-form w-100 m-auto h-100 ">
+
+        @using (Html.BeginForm("ProductEdit", "Writer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <div>
+            <h4 style="font-family:'Times New Roman'; font-size: 35px; font:bolder;">Product</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ContentId, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="contact my-2" style="font-family:'Times New Roman'; font-size: 18px; font:bolder;">
+
+
+                @Html.LabelFor(model => model.ContentName, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.EditorFor(model => model.ContentName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContentName, "", new { @class = "text-danger" })
+
+            </div>
+            @{
+                List<SelectListItem> data = ViewBag.CategoryList;
+            }
+            <div class="form-group">
+                @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.CategoryId, data, "---Select---", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="contact my-2" style="font-family:'Times New Roman'; font-size: 18px; font:bolder;">
+
+                @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.CheckBox("IsActive")
+                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+
+            </div>
+
+            @Html.HiddenFor(model => model.CreatedDate)
+
+
+
+            <div class="contact my-2" style="font-family:'Times New Roman'; font-size: 18px; font:bolder;">
+
+                @Html.LabelFor(model => model.ContentImage, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <input type="file" name="file" id="file" style="width: 100%;" />
+                @Html.ValidationMessageFor(model => model.ContentImage, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="contact my-2" style="font-family:'Times New Roman'; font-size: 18px; font:bolder;">
+
+
+                @Html.LabelFor(model => model.ShortDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
+
+
+            </div>
+            <div class="contact my-2" style="font-family:'Times New Roman'; font-size: 18px; font:bolder;">
+
+                @Html.LabelFor(model => model.LongDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.EditorFor(model => model.LongDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LongDescription, "", new { @class = "text-danger" })
+
+            </div>
+
+
+            <div class="contact my-2" style="font-family:'Times New Roman'; font-size: 18px; font:bolder;">
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+
+                        <button name="button1" id="submit" value="Save" class=" btn btn btn-outline-success btn-sm">Edit</button>
+
+
+
+
+
+                        @*<input type="submit" value="Save" class="btn btn-default" />*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    </div>
+

@@ -1,0 +1,66 @@
+﻿
+
+
+.contact-form {
+    background: rgba(0,0,0,.2);
+    color: white;
+    /* margin-top: 100px;
+    padding: 20px; */
+    box-shadow: 0px 0px 10px 3px grey;
+    height: 1500px;
+    top: 10px;
+    position: relative;
+}
+
+
+
+.full {
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('../../images/contentadd.jpg');
+    height: 117vh;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.center {
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border: 3px solid green;
+    width: 30%;
+    margin: auto;
+}
+
+.alert1 {
+    background: rgb(202, 202, 241) !important;
+    color: black !important;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .contact-form {
+        width: 10000px;
+        height: 300px;
+    }
+
+        .contact-form h1 {
+            font-size: 20px;
+        }
+}
+
+.btn {
+    border: 2px solid rgb(154, 154, 235);
+    color: white !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .text1 {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+}

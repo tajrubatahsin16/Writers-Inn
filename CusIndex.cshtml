@@ -1,0 +1,134 @@
+﻿@model IEnumerable<WritersInn1.Models.WRITER>
+@{
+    ViewBag.Title = "Customer Home";
+    Layout = "~/Views/Shared/CustomerLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Home </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../Content/userHome.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- ***********header part ss**************-->
+    <div class="bgimg">
+        <div class="container text-center text-white headerset">
+            <h1> Welcome @HttpContext.Current.User.Identity.Name to Writers Inn </h1>
+            <h2> Access content writing services from a network of specialized, professional writers. </h2>
+            <button class="btn btn-info text-white btn-lg"> Contact Us </button>
+        </div>
+    </div>
+
+    <!-- ***********header part ends**************-->
+    <!-- ***********3 extra header part starts**************-->
+    <section class="header-extradiv">
+        <div class="container headings text-center">
+            <h1> Whatever industry you’re in, we have expert writers to engage your audience!</h1>
+            <div class="row">
+                <div class="extra-div col-lg-4 col-md-4 col-12">
+                    <a href="#"> <i class="fa-3x fa fa-id-card-o" aria-hidden="true"></i> </a>
+                    <h2> AGENCIES </h2>
+                    <p>We partner with agencies to support the content and copywriting needs of their clients.</p>
+                </div>
+                <div class="extra-div col-lg-4 col-md-4 col-12">
+                    <a href="#"> <i class="fa-3x fa fa-shopping-cart" aria-hidden="true"></i> </a>
+                    <h2> ECOMMERCE </h2>
+                    <p>We write product descriptions, web pages, and category pages with an emphasis on SEO.</p>
+                </div>
+                <div class="extra-div col-lg-4 col-md-4 col-12">
+                    <a href="#"> <i class="fa-3x  fa fa-globe" aria-hidden="true"></i> </a>
+                    <h2> BRANDS </h2>
+                    <p>We develop your voice and tone and write custom content for your brands, big and small.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ***********3 extra header part ends**************-->
+    <!-- ***********Meet writers part starts**************-->
+
+    <section class="meetwriters bg-light">
+        <div class="wrapper">
+            <h1> Our Writers</h1>
+            <div class="cards_wrap">
+
+                @foreach (var item in Model)
+                {
+                    <div class="card_item">
+                        <div class="stripe-new-lg stripe-new-orange">
+                        </div>
+                        <div class="card_inner">
+                            
+
+                            <div class="writer_name">
+                                @Html.DisplayFor(modelItem => item.WriterName)
+                            </div>
+                            <div class="writerBio">
+                                @Html.DisplayFor(modelItem => item.WriterBio)
+                            </div>
+                            <div class="stripe-new-lg stripe-new-orange">
+                            </div>
+                        </div>
+                    </div>
+                }
+            <button class="Viewallwriter">
+                <h2><a>@Html.ActionLink("Show All","WriterListIndex", "WriterList")</a></h2>
+            </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ***********Meet Writers part ends**************-->
+    <!-- ***********Features Part Starts**************-->
+    <section class="features">
+        <div class="container headings text-center">
+            <h1> CONTENTS YOU CAN TRUST</h1>
+            <div class="row">
+                <div class="features-div col-lg-2 col-md-2 col-12">
+                    <a href="#"> <i class="fa-2x fa fa-star text-white" aria-hidden="true"></i> </a>
+                    <h2> Professional Writers </h2>
+                </div>
+                <div class="features-div col-lg-2 col-md-2 col-12">
+                    <a href="#"> <i class="fa-2x fa fa-trophy text-white" aria-hidden="true"></i> </a>
+                    <h2> 100% original content </h2>
+                </div>
+                <div class="features-div col-lg-2 col-md-2 col-12">
+                    <a href="#"> <i class="fa-2x fa fa-users text-white" aria-hidden="true"></i> </a>
+                    <h2> 100% client satistfaction </h2>
+                </div>
+                <div class="features-div col-lg-2 col-md-2 col-12">
+                    <a href="#"> <i class="fa-2x fa fa-pencil-square-o text-white" aria-hidden="true"></i></a>
+                    <h2> Editing and proofreading</h2>
+                </div>
+                <div class="features-div col-lg-2 col-md-2 col-12">
+                    <a href="#"> <i class="fa-2x fa fa-lightbulb-o text-white" aria-hidden="true"></i> </a>
+                    <h2> Topic pitching and ideation </h2>
+                </div>
+                <div class="features-div col-lg-2 col-md-2 col-12">
+                    <a href="#"> <i class="fa-2x fa fa-file-text-o text-white" aria-hidden="true"></i> </a>
+                    <h2> Revision Included </h2>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <!-- ***********Features Part ends**************-->
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("CusLogout", "Customer", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+        }
+    }
+    
+</body>
+</html>
